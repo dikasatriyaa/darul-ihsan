@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Request; // <-- PASTIKAN BARIS INI ADA DI ATAS
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,9 +21,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Jika berjalan di server produksi Vercel, pindahkan folder compile view ke /tmp
+        // 1. Paksa Laravel mempercayai semua load balancer/proxy dari Vercel
+        Request::someTrustProxyMethodAtRuntime(); // Laravel 11/12 otomatis handle via middleware, tapi baris di bawah ini adalah kuncinya:
+
         if (config('app.env') === 'production' || env('APP_ENV') === 'production') {
-            config(['view.compiled' => '/tmp/storage/framework/views']);
+            // 2. Paksa skema URL generasi aset ke HTTPS
+            URL::forceScheme('https');
         }
     }
 }
