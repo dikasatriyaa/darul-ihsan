@@ -19,8 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Jika berjalan di server produksi Vercel, pindahkan folder compile view ke /tmp
         if (config('app.env') === 'production' || env('APP_ENV') === 'production') {
-            URL::forceScheme('https');
+            config(['view.compiled' => '/tmp/storage/framework/views']);
         }
     }
 }
