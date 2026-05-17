@@ -12,16 +12,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 
-Route::get('/jalankan-migrasi-db', function () {
-    // Memastikan hanya bisa dieksekusi jika benar-benar dibutuhkan
-    try {
-        $output = Artisan::call('migrate', ['--force' => true]);
-        return "Database Clever Cloud Berhasil Dimigrasi! Output: " . Artisan::output();
-    } catch (\Exception $e) {
-        Log::error($e->getMessage());
-        return "Gagal melakukan migrasi: " . $e->getMessage();
-    }
-});
+// Route::get('/jalankan-migrasi-db', function () {
+//     // Memastikan hanya bisa dieksekusi jika benar-benar dibutuhkan
+//     try {
+//         $output = Artisan::call('migrate', ['--force' => true]);
+//         return "Database Clever Cloud Berhasil Dimigrasi! Output: " . Artisan::output();
+//     } catch (\Exception $e) {
+//         Log::error($e->getMessage());
+//         return "Gagal melakukan migrasi: " . $e->getMessage();
+//     }
+// });
 
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
