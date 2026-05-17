@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --color-primary: var(--color-red-600);
+    --color-secondary: var(--color-orange-600);
+    --color-info: var(--color-blue-600);
+    --color-primary-h: #0e4bd9;
+    --color-fore: #080c1a;
+    --color-muted: #eff2f7;
+    --color-border: #e8ebf0;
+    --color-success: #30b22d;
+    --color-warning: #f59e0b;
+    --color-error: #ed6b60;
+}
