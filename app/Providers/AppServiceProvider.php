@@ -21,12 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // 1. Paksa Laravel mempercayai semua load balancer/proxy dari Vercel
-        Request::someTrustProxyMethodAtRuntime(); // Laravel 11/12 otomatis handle via middleware, tapi baris di bawah ini adalah kuncinya:
-
         if (config('app.env') === 'production' || env('APP_ENV') === 'production') {
-            // 2. Paksa skema URL generasi aset ke HTTPS
-            URL::forceScheme('https');
+            // Paksa skema URL generasi aset ke HTTPS
+            \Illuminate\Support\Facades\URL::forceScheme('https');
         }
     }
 }
