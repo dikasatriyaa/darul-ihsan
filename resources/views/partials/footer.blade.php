@@ -10,6 +10,6 @@
                     </svg></div>
                 <span class="font-bold text-fore text-sm">BuildWithAngga</span>
             </div> --}}
-            <p class="text-xs text-black">© 2026 Muhamad Andika Try Satria</p>
+            <p class="text-xs text-black">© 2026 Darul Ihsan</p>
         </div>
     </footer>
